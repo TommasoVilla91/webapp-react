@@ -6,6 +6,7 @@ function MoviesPage() {
 
     const [movies, setMovies] = useState([]);
     const [search, setSearch] = useState("");
+    const [hasSearched, setHasSearched] = useState(false);
     const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
     const printMovies = () => {
@@ -17,11 +18,12 @@ function MoviesPage() {
 
         axios.get(`${backendUrl}/movies`, {params}).then((resp) => {
             setMovies(resp.data.data);
+            setHasSearched(true);
         });
     };
 
     useEffect(() => {
-        printMovies()
+        // printMovies()
     }, []);
 
     return (
@@ -44,7 +46,11 @@ function MoviesPage() {
                     <button onClick={printMovies} className="btn">Cerca</button>
                 </div>
                 <div className="container">
-                    {movies.length > 0 ? (
+                    {!hasSearched ? (
+                        <div className="empty">
+                            <p>Ancora nessun film selezionato</p>
+                        </div>
+                    ) : movies.length > 0 ? (
                         <div className="row">
                             {movies.map((curMovie) => (
                                 <MovieCard

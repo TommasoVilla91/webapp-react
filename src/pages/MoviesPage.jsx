@@ -5,11 +5,23 @@ import axios from "axios";
 function MoviesPage() {
 
     const [movies, setMovies] = useState([]);
+    const [search, setSearch] = useState("");
+    const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
+    const printMovies = () => {
+
+        const params = {};
+        if (search.length > 0) {
+            params.search = search
+        }
+
+        axios.get(`${backendUrl}/movies`, {params}).then((resp) => {
+            setMovies(resp.data.data);
+        });
+    };
 
     useEffect(() => {
-        axios.get("http://localhost:3000/movies").then((resp) => {
-            setMovies(resp.data.data);            
-        });
+        printMovies()
     }, []);
 
     return (
@@ -21,14 +33,31 @@ function MoviesPage() {
             <section>
                 <h2>Film a tua disposizione</h2>
                 <div className="container">
-                    <div className="row">
-                        {movies.map((curMovie) => ( 
-                            <MovieCard 
-                                key={curMovie.id}
-                                movie={curMovie}
-                            />
-                        ))}                       
-                    </div>
+                    <input 
+                        className="search-bar" 
+                        value={search} 
+                        onChange={(event) => setSearch(event.target.value)} 
+                        type="search" 
+                        aria-label="Cerca titolo per parola chiave"
+                        placeholder="Cerca il titolo del film che stai cercando"
+                    />
+                    <button onClick={printMovies} className="btn">Cerca</button>
+                </div>
+                <div className="container">
+                    {movies.length > 0 ? (
+                        <div className="row">
+                            {movies.map((curMovie) => (
+                                <MovieCard
+                                    key={curMovie.id}
+                                    movie={curMovie}
+                                />
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="not-found">
+                            <h4>Non c'è nessun film che corrisponde alla tua richerca...</h4>
+                        </div>
+                    )}
                 </div>
             </section>
         </>

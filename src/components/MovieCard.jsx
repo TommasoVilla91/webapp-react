@@ -9,10 +9,12 @@ function MovieCard({movie}) {
                     <img src={`${backendUrl}/${movie.image}`} alt={movie.title} />
                 </div>
                 <div className="card-text">
-                    <h4>{movie.title}</h4>
+                    <h4>{movie.title} ({movie.release_year})</h4>
                     <h5>{movie.director}</h5>
                     <p>{movie.abstract}</p>
-                    <button className="btn">Info</button>
+                    <div>
+                        <button className="btn info-btn">Info</button>
+                    </div>
                 </div>
             </div>
         </div>

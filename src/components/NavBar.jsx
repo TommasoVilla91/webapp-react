@@ -17,10 +17,12 @@ function NavBar() {
         <>
             <nav className="container">
                 <div className="row">
-                    <div className="col">
-                        <img src="" alt="logo" />
+                    <div className="col-20">
+                        <div>
+                            <img className="logo" src="../public/logo.png" alt="logo" />
+                        </div>
                     </div>
-                    <div className="col">
+                    <div className="col-20">
                         <ul className="navlink-list">
                             {navLinks.map((curLink, index) => (
                                 <li className="nav-item" key={index}>

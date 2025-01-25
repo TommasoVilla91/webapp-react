@@ -75,7 +75,6 @@ header .active {
 }
 
 main {
-    height: calc(100vh - 70px);
     background-color: rgb(23, 25, 49);
     color: white;
 }
@@ -104,7 +103,9 @@ main {
 
 /* MOVIEPAGE */
 .movie-page {
+    height: calc(100vh - 70px);
     padding: 5rem 2rem;
+    overflow-y: auto;
 }
 
 .movie-hero {
@@ -128,7 +129,7 @@ main {
 .search-bar {
     padding: 0.5rem;
     border-radius: 10px;
-    width: 60%;
+    width: 40%;
     margin-top: -0.8rem;
 }
 
@@ -150,7 +151,8 @@ main {
 
 .movie-list .row {
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    gap: 1rem;
 }
 
 .movie-list .col {

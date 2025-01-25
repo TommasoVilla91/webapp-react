@@ -13,8 +13,10 @@ function MoviesPage() {
 
     const printMovies = () => {
 
-        // stampare in base al titolo
+        // creo oggetto di supporto per raccoglere i parametri
         const params = {};
+
+        // stampare in base al titolo
         if (title) {
             params.title = title
         }
@@ -26,7 +28,7 @@ function MoviesPage() {
         if (year) {
             params.year = year
         }
-
+        // inserisco l'oggetto params nei parametri della chiamata 
         axios.get(`${backendUrl}/movies`, {params}).then((resp) => {
             setMovies(resp.data.data);
             setHasSearched(true);
@@ -34,12 +36,14 @@ function MoviesPage() {
     };
 
     useEffect(() => {
-        // printMovies()
     }, []);
 
     function handleEnterKey(event) {
         if (event.key === "Enter") {
-            printMovies();
+            printMovies();            
+            setTitle("");
+            setGenre("");
+            setYear("");
         };
     };
 

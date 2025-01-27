@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function MovieCard({movie}) {
 
     const backendUrl = import.meta.env.VITE_BACKEND_URL;
@@ -9,11 +11,9 @@ function MovieCard({movie}) {
                     <img src={`${backendUrl}/${movie.image}`} alt={movie.title} />
                 </div>
                 <div className="card-text">
-                    <h4>{movie.title} ({movie.release_year})</h4>
-                    <h5>{movie.director}</h5>
-                    <p>{movie.abstract}</p>
+                    <h4>{movie.title}</h4>
                     <div>
-                        <button className="btn info-btn">Info</button>
+                        <Link className="btn info-btn" to={`/movies/${movie.id}`}>Info</Link>
                     </div>
                 </div>
             </div>

@@ -77,6 +77,7 @@ header .active {
 main {
     background-color: rgb(23, 25, 49);
     color: white;
+    height: calc(100vh - 70px);
 }
 
 .titles {
@@ -103,7 +104,7 @@ main {
 
 /* MOVIEPAGE */
 .movie-page {
-    height: calc(100vh - 70px);
+    
     padding: 5rem 2rem;
     overflow-y: auto;
 }
@@ -179,6 +180,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: end;
+    align-items: center;
 }
 
 .card-text h4 {
@@ -209,4 +211,52 @@ main {
     background-color: rgb(87, 2, 2);
     padding: 3rem 2rem;
     border-radius: 20px;
+}
+
+/* DETAILS PAGE */
+.details-card {
+    padding: 4rem 0;
+}
+
+.details-card .row {
+    gap: 1rem;
+}
+
+.details-card img {
+    width: 30%;
+}
+
+.details-infos {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.review-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: space-between;
+}
+
+.star {
+    color: goldenrod;
+}
+
+/* CARD REVIEW */
+.review-card {
+    border-radius: 10px;
+    padding: 1rem;
+    background-color: rgb(42, 51, 104);
+}
+
+.card-body {
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.user {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
 }

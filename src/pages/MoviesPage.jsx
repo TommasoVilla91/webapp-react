@@ -17,7 +17,7 @@ function MoviesPage() {
         const params = {};
 
         // stampare in base al titolo
-        if (title) {
+        if (title.length > 0) {
             params.title = title
         }
         // stampare in base al genere
@@ -36,6 +36,7 @@ function MoviesPage() {
     };
 
     useEffect(() => {
+        printMovies()
     }, []);
 
     function handleEnterKey(event) {

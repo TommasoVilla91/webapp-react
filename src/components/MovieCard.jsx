@@ -13,7 +13,7 @@ function MovieCard({movie}) {
                 <div className="card-text">
                     <h4>{movie.title}</h4>
                     <div>
-                        <Link className="btn info-btn" to={`/movies/${movie.id}`}>Info</Link>
+                        <Link className="btn info-btn" to={`/movies/${movie.slug}`}>Info</Link>
                     </div>
                 </div>
             </div>

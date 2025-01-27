@@ -7,7 +7,7 @@ import ReviewCard from "../components/ReviewCard";
 function MovieDetailsPage() {
 
     // grazie a router-dom uso useParams per prelevare solamente l'id dei singoli film
-    const {id} = useParams();
+    const {slug} = useParams();
     const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
     // stato per il singolo libro
@@ -15,7 +15,7 @@ function MovieDetailsPage() {
 
     // useEffect per far comparire all'avvio della pagina le recensioni
     useEffect(() => {
-        axios.get(`${backendUrl}/movies/${id}`).then((resp) => {
+        axios.get(`${backendUrl}/movies/${slug}`).then((resp) => {
             setMovie(resp.data.data);
         });
     }, []);

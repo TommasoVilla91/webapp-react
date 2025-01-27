@@ -78,6 +78,7 @@ main {
     background-color: rgb(23, 25, 49);
     color: white;
     height: calc(100vh - 70px);
+    overflow-y: auto;
 }
 
 .titles {
@@ -103,10 +104,8 @@ main {
 }
 
 /* MOVIEPAGE */
-.movie-page {
-    
-    padding: 5rem 2rem;
-    overflow-y: auto;
+.movie-page {    
+    padding: 5rem 2rem;    
 }
 
 .movie-hero {
@@ -235,7 +234,7 @@ main {
 .review-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem;
+    gap: 1rem;
     justify-content: space-between;
 }
 
@@ -248,6 +247,7 @@ main {
     border-radius: 10px;
     padding: 1rem;
     background-color: rgb(42, 51, 104);
+    width: 45%;
 }
 
 .card-body {

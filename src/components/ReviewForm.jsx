@@ -1,34 +1,60 @@
+import { useState } from "react";
+
 const initialValues = {
-    username: "",
+    name: "",
     text: "",
     vote: 0
 }
 
-function ReviewForm() {
+// a questa funzione passo come oggetto una funzione che si collega a quella definita nel genitore
+function ReviewForm({onSubmitFunction}) {
 
     // funzione per creare array per i voti
     const votes = Array.from(Array(6).keys());
 
-    // stato per gestire il form iniziale 
+    // stato per gestire il form iniziale e i suoi cambiamenti
     const [formData, setFormData] = useState(initialValues)
 
-    const setFormValues = () => {
-        
-    }
+    // funzione per gestire i dati che vengono inseriti nel form
+    const setFormValues = (event) => {
+
+        // destrutturazione per selezionare il contenuto del campo ed il campo da cambiare
+        const {value, name} = event.target;
+
+        // creazio di un oggetto con la copia dello stato del form
+        const newData = {...formData};
+
+        // aggiungo a questo oggetto una chiave dinamica a cui associo il valore corrispondente
+        // name = "username" e value = "Mimmo" allora username ="Mimmo"
+        newData[name] = value;
+
+        // infine aggiorno lo stato con il nuovo oggeto creato
+        setFormData(newData);
+    };
 
     return (
-        <form>
+        // collego la funzione e aggiunto event.preventDefault
+        <form onSubmit={(event) => {
+                console.log(event);
+                
+                event.preventDefault(); 
+                onSubmitFunction();
+            }}
+        >
             <div>
-                <label htmlFor="username">Nome utente</label>
+                <label htmlFor="name">Nome utente</label>
                 <input 
                     type="text"
-                    id="username"
+                    name="name"
+                    value={formData.name}
+                    id="name"
                     placeholder="Nome di chi sta scrivendo la recensione"
+                    onChange={setFormValues}
                 />
             </div>
             <div>
                 <label htmlFor="vote">Voto</label>
-                <select name="" id="username">
+                <select name="vote" value={formData.vote} id="username" onChange={setFormValues}>
                     {votes.map((curVote) => (
                         <option key={curVote} value={curVote}>{curVote}</option>
                     ))}
@@ -36,7 +62,7 @@ function ReviewForm() {
             </div>
             <div>
                 <label htmlFor="text">Scrivi qui la tua recensione</label>
-                <textarea name="" id="text"></textarea>
+                <textarea name="text" value={formData.text} id="text" onChange={setFormValues}></textarea>
             </div>
             <div>
                 <button type="submit" className="btn btn-review">Invia</button>

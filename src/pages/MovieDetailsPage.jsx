@@ -14,13 +14,28 @@ function MovieDetailsPage() {
     // stato per il singolo libro
     const [movie, setMovie] = useState(null);
 
-    // useEffect per far comparire all'avvio della pagina le recensioni
-    useEffect(() => {
+    // funzione per far comparire i dettagli del singolo libro (sulla base dello slug)
+    const printMovie = () => {
         axios.get(`${backendUrl}/movies/${slug}`).then((resp) => {
             setMovie(resp.data.data);
         });
+    };
+
+    // useEffect per far comparire i dettagli all'avvio della pagina
+    useEffect(() => {
+        printMovie()
     }, []);
 
+    // funzione con chiamata axios per far stampare in pagina i dati aggiornati delle recensioni, quindi aggiungendo quella nuova
+    const submitReview = (formData) => {
+        axios.post(`${backendUrl}/movies/${movie.id}/reviews`, formData).then((resp) => {
+            console.log(resp);
+            
+            printMovie();
+        });
+    };
+
+    // funzione per creare stelle in base al voto
     function stars() {
 
         const starsNum = 5;
@@ -60,9 +75,11 @@ function MovieDetailsPage() {
                         <section>
 
                             {/* form per recensioni */}
-                            <ReviewForm />
+                            <ReviewForm 
+                                onSubmitFunction={submitReview}
+                            />
                             <div className="review-list">
-                                
+
                                 {/* recensioni */}
                                 {movie.reviews.map((curReview) => (
                                     <ReviewCard 

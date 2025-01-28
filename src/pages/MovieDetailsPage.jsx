@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ReviewCard from "../components/ReviewCard";
+import ReviewForm from "../components/ReviewForm";
 
 function MovieDetailsPage() {
 
@@ -41,6 +42,8 @@ function MovieDetailsPage() {
                 <>
                     <div className="container">
                         <section>
+
+                            {/* dettagli principali della card */}
                             <div className="details-card">
                                 <div className="row">
                                     <img src={`${backendUrl}/${movie.image}`} alt={movie.title} />
@@ -55,7 +58,11 @@ function MovieDetailsPage() {
                             </div>
                         </section>
                         <section>
+
+                            {/* form per recensioni */}
+                            <ReviewForm />
                             <div className="review-list">
+                                
                                 {/* recensioni */}
                                 {movie.reviews.map((curReview) => (
                                     <ReviewCard 

@@ -1,19 +1,10 @@
 import { useState } from "react";
 
-const initialValues = {
-    name: "",
-    text: "",
-    vote: 0
-}
-
 // a questa funzione passo come oggetto una funzione che si collega a quella definita nel genitore
-function ReviewForm({onSubmitFunction}) {
+function ReviewForm({onSubmitFunction, formData, setFormData}) {
 
     // funzione per creare array per i voti
     const votes = Array.from(Array(6).keys());
-
-    // stato per gestire il form iniziale e i suoi cambiamenti
-    const [formData, setFormData] = useState(initialValues)
 
     // funzione per gestire i dati che vengono inseriti nel form
     const setFormValues = (event) => {
@@ -25,7 +16,7 @@ function ReviewForm({onSubmitFunction}) {
         const newData = {...formData};
 
         // aggiungo a questo oggetto una chiave dinamica a cui associo il valore corrispondente
-        // name = "username" e value = "Mimmo" allora username ="Mimmo"
+        // name = "username" e value = "Mimmo" allora username = "Mimmo"
         newData[name] = value;
 
         // infine aggiorno lo stato con il nuovo oggeto creato
@@ -38,7 +29,7 @@ function ReviewForm({onSubmitFunction}) {
                 console.log(event);
                 
                 event.preventDefault(); 
-                onSubmitFunction();
+                onSubmitFunction(formData);
             }}
         >
             <div>

@@ -5,6 +5,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ReviewCard from "../components/ReviewCard";
 import ReviewForm from "../components/ReviewForm";
 
+const initialValues = {
+    name: "",
+    text: "",
+    vote: 0
+}
+
 function MovieDetailsPage() {
 
     // grazie a router-dom uso useParams per prelevare solamente l'id dei singoli film
@@ -14,9 +20,14 @@ function MovieDetailsPage() {
     // stato per il singolo libro
     const [movie, setMovie] = useState(null);
 
+    // stato per gestire il form iniziale e i suoi cambiamenti
+    const [formData, setFormData] = useState(initialValues)
+
     // funzione per far comparire i dettagli del singolo libro (sulla base dello slug)
     const printMovie = () => {
         axios.get(`${backendUrl}/movies/${slug}`).then((resp) => {
+            console.log(resp);
+            
             setMovie(resp.data.data);
         });
     };
@@ -28,6 +39,8 @@ function MovieDetailsPage() {
 
     // funzione con chiamata axios per far stampare in pagina i dati aggiornati delle recensioni, quindi aggiungendo quella nuova
     const submitReview = (formData) => {
+        console.log(formData);
+        
         axios.post(`${backendUrl}/movies/${movie.id}/reviews`, formData).then((resp) => {
             console.log(resp);
             
@@ -77,6 +90,8 @@ function MovieDetailsPage() {
                             {/* form per recensioni */}
                             <ReviewForm 
                                 onSubmitFunction={submitReview}
+                                formData={formData}
+                                setFormData={setFormData}
                             />
                             <div className="review-list">
 

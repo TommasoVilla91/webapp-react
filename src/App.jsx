@@ -6,6 +6,7 @@ import MovieDetailsPage from "./pages/movieDetailsPage";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faStar as faSolidStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as faRegularStar } from '@fortawesome/free-regular-svg-icons';
+import CreateMoviePage from "./pages/CreateMoviePage";
 
 library.add(faSolidStar, faRegularStar)
 
@@ -21,6 +22,7 @@ function App() {
             <Route path="/movies">
               <Route path="" element={<MoviesPage />} />
               <Route path=":slug" element={<MovieDetailsPage />} />
+              <Route path="create" element={<CreateMoviePage />} />
             </Route>
           </Route>
         </Routes>      

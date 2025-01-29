@@ -113,10 +113,37 @@ main {
     margin-bottom: 2rem;
 }
 
+.row .movie-area {
+    justify-content: space-around;
+}
+
+.create-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    border-radius: 20px;
+    background-color: rgb(23, 25, 49);
+}
+
+.create-index {
+    text-align: center;
+}
+
+.btn-create {
+    background-color: goldenrod;
+    color: white;
+}
+
 .movie-area {
     padding: 3rem 2rem;
     border-radius: 30px;
     background-color: rgb(25, 25, 77);
+}
+
+.research {
+    width: 80%;
 }
 
 .form {
@@ -129,7 +156,7 @@ main {
 .search-bar {
     padding: 0.5rem;
     border-radius: 10px;
-    width: 40%;
+    width: 80%;
     margin-top: -0.8rem;
 }
 
@@ -236,6 +263,7 @@ main {
     flex-wrap: wrap;
     gap: 1rem;
     justify-content: space-between;
+    padding: 5rem 0;
 }
 
 .star {
@@ -260,3 +288,96 @@ main {
     gap: 2rem;
     align-items: center;
 }
+
+/* RECENSIONI */
+.review-form {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(17, 18, 36);
+    border-radius: 20px;
+    padding: 1.5rem;
+}
+
+.row-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 80%;
+}
+
+.row-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+.username {
+    display: flex;
+    flex-direction: column;
+}
+
+.username input {
+    width: 30%;
+    height: 2rem;
+    border-radius: 10px;
+    padding-left: 0.5rem;
+}
+
+.vote {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.vote select {
+    width: 2rem;
+    height: 1.5rem;
+}
+
+.text-review {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.text-review textarea {
+    height: 5rem;
+    border-radius: 10px;
+}
+
+/* CREATE PAGE */
+.create {
+    padding: 4rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;    
+}
+ .create > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+ }
+
+ .create input[type="text"] {
+    padding: 0.5rem;
+    border-radius: 10px;
+ }
+
+ .create textarea {
+    border-radius: 10px;
+    height: 6rem;
+    padding: 0.5rem;
+    overflow-y: auto;
+ }
+
+ .add-btn {
+    width: 7rem;
+ }
+
+ .add-btn button {
+    padding: 0.5rem 0;
+    border-radius: 10px;
+    background-color: blue;
+    color: white;
+    border: none;
+ }

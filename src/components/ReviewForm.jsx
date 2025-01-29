@@ -25,37 +25,39 @@ function ReviewForm({onSubmitFunction, formData, setFormData}) {
 
     return (
         // collego la funzione e aggiunto event.preventDefault
-        <form onSubmit={(event) => {
+        <form className="review-form" onSubmit={(event) => {
                 console.log(event);
                 
                 event.preventDefault(); 
                 onSubmitFunction(formData);
             }}
         >
-            <div>
-                <label htmlFor="name">Nome utente</label>
-                <input 
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    id="name"
-                    placeholder="Nome di chi sta scrivendo la recensione"
-                    onChange={setFormValues}
-                />
+            <div className="row-form">
+                <div className="username">
+                    <label htmlFor="name">Nome utente</label>
+                    <input 
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        id="name"
+                        placeholder="Nome utente"
+                        onChange={setFormValues}
+                    />
+                </div>
+                <div className="vote">
+                    <label htmlFor="vote">Voto</label>
+                    <select name="vote" value={formData.vote} id="username" onChange={setFormValues}>
+                        {votes.map((curVote) => (
+                            <option key={curVote} value={curVote}>{curVote}</option>
+                        ))}
+                    </select>
+                </div>
+                <div className="text-review">            
+                    <label htmlFor="text">Scrivi qui la tua recensione</label>
+                    <textarea name="text" value={formData.text} id="text" onChange={setFormValues}></textarea>                
+                </div>
             </div>
-            <div>
-                <label htmlFor="vote">Voto</label>
-                <select name="vote" value={formData.vote} id="username" onChange={setFormValues}>
-                    {votes.map((curVote) => (
-                        <option key={curVote} value={curVote}>{curVote}</option>
-                    ))}
-                </select>
-            </div>
-            <div>
-                <label htmlFor="text">Scrivi qui la tua recensione</label>
-                <textarea name="text" value={formData.text} id="text" onChange={setFormValues}></textarea>
-            </div>
-            <div>
+            <div className="row-button">
                 <button type="submit" className="btn btn-review">Invia</button>
             </div>
         </form>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import MovieCard from "../components/MovieCard";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function MoviesPage() {
 
@@ -54,43 +55,57 @@ function MoviesPage() {
                 <h1>In quest'area troverai tutti i film disponibili</h1>
                 <h3>Dacci un'occhiata!</h3>
             </section>
-            <section className="movie-area">
-                <h2>Film a tua disposizione</h2>
-                <div className="form">
-                    <label htmlFor="">Titolo</label>
-                    <input 
-                        className="search-bar title-bar" 
-                        value={title} 
-                        onChange={(event) => setTitle(event.target.value)} 
-                        type="search" 
-                        aria-label="Cerca titolo"
-                        placeholder="Cerca per il titolo del film"
-                        onKeyUp={handleEnterKey}
-                    />
-                    <label htmlFor="">Genere</label>
-                    <input 
-                        className="search-bar genre-bar" 
-                        value={genre} 
-                        onChange={(event) => setGenre(event.target.value)} 
-                        type="search" 
-                        aria-label="Cerca genere"
-                        placeholder="Cerca per il genere del film"
-                        onKeyUp={handleEnterKey}
-                    />
-                    <label htmlFor="">Anno di pubblicazione</label>
-                    <input 
-                        className="search-bar year-bar" 
-                        value={year} 
-                        onChange={(event) => setYear(event.target.value)} 
-                        type="search" 
-                        aria-label="Cerca anno di pubblicazione"
-                        placeholder="Cerca per per l'anno del film"
-                        onKeyUp={handleEnterKey}
-                    />
-                    <div>
-                        <button onClick={printMovies} className="btn search-bnt">Cerca</button>
+
+            {/* form per la ricerca + link per aggiunta film */}
+            <section>
+                <div className="row movie-area">
+                    <div className="research">
+                        <h2>Film a tua disposizione</h2>
+                        <form className="form">
+                            <label htmlFor="">Titolo</label>
+                            <input 
+                                className="search-bar title-bar" 
+                                value={title} 
+                                onChange={(event) => setTitle(event.target.value)} 
+                                type="search" 
+                                aria-label="Cerca titolo"
+                                placeholder="Cerca per il titolo del film"
+                                onKeyUp={handleEnterKey}
+                            />
+                            <label htmlFor="">Genere</label>
+                            <input 
+                                className="search-bar genre-bar" 
+                                value={genre} 
+                                onChange={(event) => setGenre(event.target.value)} 
+                                type="search" 
+                                aria-label="Cerca genere"
+                                placeholder="Cerca per il genere del film"
+                                onKeyUp={handleEnterKey}
+                            />
+                            <label htmlFor="">Anno di pubblicazione</label>
+                            <input 
+                                className="search-bar year-bar" 
+                                value={year} 
+                                onChange={(event) => setYear(event.target.value)} 
+                                type="search" 
+                                aria-label="Cerca anno di pubblicazione"
+                                placeholder="Cerca per per l'anno del film"
+                                onKeyUp={handleEnterKey}
+                            />
+                            <div>
+                                <button onClick={printMovies} className="btn search-bnt">Cerca</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div className="create-link">
+                        <h2>HEY!</h2>
+                        <h3 className="create-index">Non hai trovato il film che cercavi?</h3>
+                        <Link to="/movies/create" className="btn btn-create">Aggiungilo</Link>
                     </div>
                 </div>
+                
+
+                {/* lista dei film aggiunti */}
                 <div className="movie-list">
                     {!hasSearched ? (
                         <div className="empty">
